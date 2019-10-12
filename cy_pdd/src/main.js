@@ -3,11 +3,12 @@
 import Vue from 'vue'
 import App from './App'
 
-Vue.config.productionTip = false
+// 引入路由器
+import router from './router'
 
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
+  router,
   components: { App },
   template: '<App/>'
 })

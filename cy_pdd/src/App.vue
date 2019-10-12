@@ -1,6 +1,6 @@
 <template>
   <div>
-    主页
+    <router-view></router-view>
   </div>
 </template>
 
@@ -11,5 +11,4 @@ export default {
 </script>
 
 <style scoped lang="stylus" ref="stylesheet/stylus">
-  
 </style>
