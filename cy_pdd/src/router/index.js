@@ -1,11 +1,12 @@
 // 引入对应模块
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../pages/Home/Home'
-import Recommend from '../pages/Recommend/Recommend'
-import Search from '../pages/Search/Search'
-import Chat from '../pages/Chat/Chat'
-import Me from '../pages/Me/Me'
+import Home from '@/pages/Home/Home'
+import Recommend from '@/pages/Recommend/Recommend'
+import Search from '@/pages/Search/Search'
+import Chat from '@/pages/Chat/Chat'
+import Me from '@/pages/Me/Me'
+import Hot from '@/pages/Home/Children/Hot'
 
 // 声明使用
 Vue.use(VueRouter)
