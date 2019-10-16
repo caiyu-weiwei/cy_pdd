@@ -1,10 +1,11 @@
 <template>
-  <div>
+  <div class="home">
     <ly-tab
       v-model="selectedId"
       :items="items"
       :options="options"
       @change="handleChange"
+      class="fix"
     />
     <router-view />
   </div>
@@ -32,5 +33,12 @@
 </script>
 
 <style lang="stylus" scoped ref="stylesheet/stylus">
-
+  .home
+    width 100%
+    height 100%
+    .fix
+      position fixed
+      top 0
+      left 0
+      z-index 998
 </style>
