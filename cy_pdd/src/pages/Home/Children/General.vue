@@ -10,6 +10,6 @@
   }
 </script>
 
-<style lang="scss" scoped>
+<style lang="stylus" scoped ref="stylesheet/stylus">
 
 </style>

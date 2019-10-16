@@ -1,8 +1,8 @@
 <template>
   <div class="bottom-tab">
     <span class="tab-item" v-for="(item, index) in tabBarArr" :key="index" @click="switchTo(item.path)">
-      <img :src="item.path === $route.path ? item.selected : item.normal" >
-      <span :class="item.path === $route.path ? 'on' : ''">{{ item.title }}</span>
+      <img :src="$route.path.includes(item.path) ? item.selected : item.normal" >
+      <span :class="$route.path.includes(item.path) ? 'on' : ''">{{ item.title }}</span>
     </span>
   </div>
 </template>

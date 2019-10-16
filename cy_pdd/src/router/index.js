@@ -7,6 +7,14 @@ import Search from '@/pages/Search/Search'
 import Chat from '@/pages/Chat/Chat'
 import Me from '@/pages/Me/Me'
 import Hot from '@/pages/Home/Children/Hot'
+import Dress from '@/pages/Home/Children/Dress'
+import Box from '@/pages/Home/Children/Box'
+import Mbaby from '@/pages/Home/Children/Mbaby'
+import General from '@/pages/Home/Children/General'
+import Food from '@/pages/Home/Children/Food'
+import Shirt from '@/pages/Home/Children/Shirt'
+import Man from '@/pages/Home/Children/Man'
+import Ele from '@/pages/Home/Children/Ele'
 
 // 声明使用
 Vue.use(VueRouter)
@@ -18,7 +26,21 @@ export default new VueRouter({
   routes: [
     {
       path: '/home',
-      component: Home
+      component: Home,
+
+      // 配置二级路由
+      children: [
+        {path: 'hot', component: Hot},
+        {path: 'dress', component: Dress},
+        {path: 'box', component: Box},
+        {path: 'mbaby', component: Mbaby},
+        {path: 'general', component: General},
+        {path: 'food', component: Food},
+        {path: 'shirt', component: Shirt},
+        {path: 'man', component: Man},
+        {path: 'ele', component: Ele},
+        {path: '/home', redirect: '/home/hot'},
+      ]
     },
     {
       path: '/recommend',
