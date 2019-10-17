@@ -35,7 +35,16 @@
       new Swiper ('.swiper-container', {
         autoplay: true,//可选选项，自动滑动
         loop: true, // 循环模式选项
-        
+        effect: 'coverflow',
+        slidesPerView: 1,
+        centeredSlides: true,
+        coverflowEffect: {
+          rotate: 60,
+          stretch: 10,
+          depth: 60,
+          modifier: 2,
+          slideShadows : true
+        },
         // 如果需要分页器
         pagination: {
           el: '.swiper-pagination',

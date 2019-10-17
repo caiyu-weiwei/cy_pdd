@@ -2,7 +2,7 @@
   "name": "cy_pdd",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "weiwei.cai <weiwei.cai@zhangmen.com>",
+  "author": "yu.cai",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
