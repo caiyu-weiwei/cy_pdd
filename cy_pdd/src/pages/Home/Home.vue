@@ -36,6 +36,7 @@
   .home
     width 100%
     height 100%
+    background #f5f5f5
     .fix
       position fixed
       top 0
