@@ -19,15 +19,15 @@
     data() {
       return {
         sliderImgList: [
-          require('../imgs/rowing/s1.png'),
-          require('../imgs/rowing/s2.png'),
-          require('../imgs/rowing/s3.png'),
-          require('../imgs/rowing/s4.png'),
-          require('../imgs/rowing/s5.png'),
-          require('../imgs/rowing/s6.png'),
-          require('../imgs/rowing/s7.png'),
-          require('../imgs/rowing/s8.png'),
-          require('../imgs/rowing/s9.png'),
+          require('../../imgs/rowing/s1.png'),
+          require('../../imgs/rowing/s2.png'),
+          require('../../imgs/rowing/s3.png'),
+          require('../../imgs/rowing/s4.png'),
+          require('../../imgs/rowing/s5.png'),
+          require('../../imgs/rowing/s6.png'),
+          require('../../imgs/rowing/s7.png'),
+          require('../../imgs/rowing/s8.png'),
+          require('../../imgs/rowing/s9.png'),
         ]
       }
     },
