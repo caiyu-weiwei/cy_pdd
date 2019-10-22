@@ -8,14 +8,19 @@
       </div>
       <div class="swiper-pagination"></div>
     </div>
+    <hot-nav />
   </div>
 </template>
 
 <script>
   import Swiper from 'swiper'
   import 'swiper/css/swiper.min.css'
+  import HotNav from './HotNav'
   export default {
     name: 'Hot',
+    components: {
+      HotNav
+    },
     data() {
       return {
         sliderImgList: [
