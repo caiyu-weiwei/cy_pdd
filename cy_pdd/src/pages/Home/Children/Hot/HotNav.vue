@@ -25,25 +25,78 @@
         hotNavList,
         // 获取设备的屏宽
         screenWidth: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
+        // 滚动内容宽度
         scrollContentWidth: 720,
+        // 滚动条背景宽
         bgBarWidth: 100,
-        scrollBarWidth: 0
+        // 待计算的滚动条宽
+        scrollBarWidth: 0,
+        // 起点
+        startX: 0,
+        // 结束标记
+        endFlag: 0,
+        // 滚动条滚动距离
+        scrollBarMoveWidth: 0
       }
     },
     computed: {
       scrollBar() {
         return {
-          width: `${this.scrollBarWidth}px`
+          width: `${this.scrollBarWidth}px`,
+          left: `${this.scrollBarMoveWidth}px`
         }
       }
     },
     mounted() {
       this.getScrollBarWidth()
+      this.bindEvent()
     },
     methods: {
+      /**
+       * 计算滚动条宽度
+       */
       getScrollBarWidth() {
         const { screenWidth, scrollContentWidth, bgBarWidth } = this
         this.scrollBarWidth = screenWidth / scrollContentWidth * bgBarWidth
+      },
+      /**
+       * 移动端事件监听
+       */
+      bindEvent() {
+        this.$el.addEventListener('touchstart', this.handleTouchStart, false)
+        this.$el.addEventListener('touchmove', this.handleTouchMove, false)
+        this.$el.addEventListener('touchend', this.handleTouchEnd, false)
+      },
+      /**
+       * 开始触摸
+       */
+      handleTouchStart(event) {
+        // 获取第一个触点
+        let touch = event.touches[0]
+        // 计算起始位置
+        this.startX = touch.pageX
+      },
+      /**
+       * 开始移动
+       */
+      handleTouchMove(event) {
+        // 获取移动中的第一个触点
+        let touch = event.touches[0]
+        // 计算滚动条移动距离
+        this.scrollBarMoveWidth = -((touch.pageX - this.startX) * (this.screenWidth / this.scrollContentWidth) - this.endFlag)
+        // 滚动边界限制
+        if (this.scrollBarMoveWidth <= 0) {
+          this.scrollBarMoveWidth = 0
+        } else if (this.scrollBarMoveWidth >= this.bgBarWidth - this.scrollBarWidth) {
+          this.scrollBarMoveWidth = this.bgBarWidth - this.scrollBarWidth
+        }
+      },
+      /**
+       * 触摸结束
+       */
+      handleTouchEnd(event) {
+        // 记录触摸结束标记
+        this.endFlag = this.scrollBarMoveWidth
       }
     },
   }
