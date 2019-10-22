@@ -15,6 +15,8 @@
     <div class="hot-ad">
       <img :src="hotAd" alt="">
     </div>
+    <!-- 商品列表 -->
+    <hot-shop-list />
   </div>
 </template>
 
@@ -22,10 +24,12 @@
   import Swiper from 'swiper'
   import 'swiper/css/swiper.min.css'
   import HotNav from './HotNav'
+  import HotShopList from './HotShopList'
   export default {
     name: 'Hot',
     components: {
-      HotNav
+      HotNav,
+      HotShopList
     },
     data() {
       return {
