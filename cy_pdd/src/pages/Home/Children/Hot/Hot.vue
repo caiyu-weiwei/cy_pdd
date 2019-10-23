@@ -75,7 +75,11 @@
     width 100%
     height 100%
     padding-top 46px
+    background #F5F5F5
     .hot-ad
+      background #FFF
+      margin 8px 0
+      padding 5px
       img
         width 100%
 </style>
