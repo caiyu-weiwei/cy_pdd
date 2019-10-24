@@ -25,6 +25,9 @@
   import 'swiper/css/swiper.min.css'
   import HotNav from './HotNav'
   import HotShopList from './HotShopList'
+  import {
+    mapState
+  } from 'vuex'
   export default {
     name: 'Hot',
     components: {
@@ -47,7 +50,14 @@
         hotAd: require('../../imgs/hot_ad/home_ad.gif')
       }
     },
+    computed: {
+      ...mapState(['homecasual'])
+    },
     mounted() {
+      /**
+       * 获取轮播图数据
+       */
+      // this.$store.dispatch('reqHomeCasual')
       new Swiper ('.swiper-container', {
         autoplay: true,//可选选项，自动滑动
         loop: true, // 循环模式选项
