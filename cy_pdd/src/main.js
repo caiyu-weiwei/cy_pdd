@@ -9,12 +9,16 @@ import router from './router'
 // 引入LyTab
 import LyTab from 'ly-tab'
 
+// 引入store
+import store from './store'
+
 // 应用相应组件
 Vue.use(LyTab)
 
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })
