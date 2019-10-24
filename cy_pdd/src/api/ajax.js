@@ -8,7 +8,7 @@ export default function ajax(url = '', params = {}, type = 'GET') {
         paramsStr += key + '=' + params[key] + '&'
       })
 
-      // 去掉拼接字符串中的最后一个 &
+      // 去掉拼接在url中参数的最后一个 &
       paramsStr && (paramsStr = paramsStr.substring(0, paramsStr.length-1))
 
       // 组装GET请求中的ual
