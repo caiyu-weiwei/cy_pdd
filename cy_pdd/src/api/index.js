@@ -5,5 +5,8 @@ const BASE_URL = 'http://127.0.0.1:3000'
 
 // 请求方法
 
-// 首页轮播图
+// 请求首页轮播图
 export const getHomeCasual = () => ajax(BASE_URL + '/api/homecasual')
+
+// 请求首页导航
+export const getHomeNav = () => ajax(BASE_URL + '/api/homenav')

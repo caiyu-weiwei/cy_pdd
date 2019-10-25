@@ -1,15 +1,25 @@
 import {
   getHomeCasual,
+  getHomeNav,
 } from 'api'
 import {
-  HOME_CASUAL
+  HOME_CASUAL,
+  HOME_NAV
 } from './mutation-types'
 export default {
   /**
    * 获取首页轮播图
    */
   async reqHomeCasual({commit}) {
-    const request = await getHomeCasual()
-    commit(HOME_CASUAL, request.message.data)
+    const result = await getHomeCasual()
+    commit(HOME_CASUAL, result.message.data)
+  },
+  /**
+   * 获取首页二级导航图片
+   * @param {*} param0 
+   */
+  async reqHomeNav({commit}) {
+    const result = await getHomeNav()
+    commit(HOME_NAV, result.message.data)
   }
 }

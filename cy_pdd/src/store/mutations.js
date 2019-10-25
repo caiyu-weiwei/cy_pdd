@@ -1,5 +1,6 @@
 import {
-  HOME_CASUAL
+  HOME_CASUAL,
+  HOME_NAV
 } from './mutation-types'
 export default {
   /**
@@ -9,5 +10,13 @@ export default {
    */
   [HOME_CASUAL](state, {homecasual}) {
     state.homecasual = homecasual
+  },
+  /**
+   * 首页二级导航
+   * @param {*} state
+   * @param {*} param1
+   */
+  [HOME_NAV](state, {homenav}) {
+    state.homenav = homenav
   }
 }
