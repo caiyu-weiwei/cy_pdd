@@ -130,7 +130,7 @@
   }
 </script>
 
-<style lang="stylus" scoped ref="stylesheet/stylus">
+<style scoped lang="stylus" ref="stylesheet/stylus">
   .search-container
     background #F5F5F5
     .shop
