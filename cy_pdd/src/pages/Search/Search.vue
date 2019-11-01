@@ -23,6 +23,35 @@
               <span>女装</span>
               <a href="">查看更多 ></a>
             </div>
+            <ul class="phone-type">
+              <li>
+                <img src="./images/s1.png" alt="">
+              </li>
+              <li>
+                <img src="./images/s1.png" alt="">
+              </li>
+              <li>
+                <img src="./images/s1.png" alt="">
+              </li>
+              <li>
+                <img src="./images/s1.png" alt="">
+              </li>
+              <li>
+                <img src="./images/s1.png" alt="">
+              </li>
+              <li>
+                <img src="./images/s1.png" alt="">
+              </li>
+              <li>
+                <img src="./images/s1.png" alt="">
+              </li>
+              <li>
+                <img src="./images/s1.png" alt="">
+              </li>
+              <li>
+                <img src="./images/s1.png" alt="">
+              </li>
+            </ul>
             <ul class="shop-items">
               <li>
                 <img src="./images/s1.png" alt="">
@@ -122,11 +151,27 @@
 
 <script>
   import SearchNav from './Children/SearchNav'
+  import BScroll from 'better-scroll'
   export default {
     name: 'Search',
     components: {
       SearchNav
-    }
+    },
+    mounted() {
+      this._initScrollEvent()
+    },
+    methods: {
+      _initScrollEvent() {
+        new BScroll('.menu-wrapper', {
+          scrollY: true,
+          click: true
+        })
+        new BScroll('.shop-wrapper', {
+          scrollY: true,
+          click: true
+        })
+      }
+    },
   }
 </script>
 
@@ -196,6 +241,20 @@
                 width 60%
                 height 60%
                 margin-bottom 5px
+          .phone-type
+            width 100%
+            background #fff
+            display flex
+            flex-direction row
+            flex-wrap wrap
+            li
+              width 33.3%
+              display flex
+              justify-content center
+              align-items center
+              img
+                width 70%
+                height 70%
 
             
 </style>
