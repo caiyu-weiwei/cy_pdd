@@ -671,7 +671,6 @@
         this._initRightLiTops()
         // 监听右侧模块滚动事件
         this.rightScroll.on('scroll', ({x, y}) => {
-          console.log('this.rightScroll y', y)
           this.scrollY = Math.abs(y)
         })
       },
@@ -682,14 +681,12 @@
         let lisArr = [], top = 0
         lisArr.push(top)
         const shopLis = this.$refs.shopUl.getElementsByClassName('shop-li')
-        console.log('shopLis', shopLis)
         // li.clientHeight 为li元素的高度（height+padding）
         Array.prototype.slice.call(shopLis).forEach(li => {
           top += li.clientHeight
           lisArr.push(top)
         })
         this.rightLiTops = lisArr
-        console.log('this.rightLiTops', this.rightLiTops)
       },
       /**
        * 点击左侧导航切换右侧商品列表
