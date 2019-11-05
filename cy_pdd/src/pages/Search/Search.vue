@@ -663,7 +663,7 @@
         // 左侧滚动初始化
         this.leftScroll = new BScroll('.menu-wrapper', {})
         // 右侧滚动初始化
-        this.rightScroll = new BScroll('.shop-wrapper', {probeType: 2})
+        this.rightScroll = new BScroll('.shop-wrapper', {probeType: 3})
         // 计算出右侧所有模块头部位置
         this._initRightLiTops()
         // 监听右侧模块滚动事件
