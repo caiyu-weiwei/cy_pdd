@@ -2,6 +2,8 @@
   <div class="search-container">
     <!-- 搜索导航 -->
     <search-nav/>
+    <!-- 搜索面板 -->
+    <search-panel></search-panel>
     <!-- 商品列表 -->
     <div class="shop">
       <!-- 左侧 -->
@@ -46,10 +48,12 @@
 <script>
   import SearchNav from './Children/SearchNav'
   import BScroll from 'better-scroll'
+  import SearchPanel from './Children/SearchPanel'
   export default {
     name: 'Search',
     components: {
-      SearchNav
+      SearchNav,
+      SearchPanel
     },
     data() {
       return {
