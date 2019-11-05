@@ -10,7 +10,9 @@
           <li class="menu-item"
               v-for="(goods, index1) in dataSource"
               :key="index1"
-              :class="{'current': index1 === currentIndex}">
+              :class="{'current': index1 === currentIndex}"
+              @click="handleClickMenuItem(index1)"
+              ref="menuLis">
             <span>{{goods.name}}</span>
           </li>
         </ul>
@@ -648,6 +650,7 @@
       currentIndex() {
         const {scrollY, rightLiTops} = this
         return rightLiTops.findIndex((liTop, index) => {
+          this._scrollLeft(index)
           return scrollY >= liTop && scrollY < rightLiTops[index+1]
         })
       }
@@ -687,6 +690,20 @@
         })
         this.rightLiTops = lisArr
         console.log('this.rightLiTops', this.rightLiTops)
+      },
+      /**
+       * 点击左侧导航切换右侧商品列表
+       */
+      handleClickMenuItem(index) {
+        this.scrollY = this.rightLiTops[index]
+        this.rightScroll.scrollTo(0, -this.scrollY, 300)
+      },
+      /**
+       * 左侧导航联动效果
+       */
+      _scrollLeft(index) {
+        let el = this.$refs.menuLis[index]
+        this.leftScroll.scrollToElement(el, 300, 0, -100)
       }
     },
   }
