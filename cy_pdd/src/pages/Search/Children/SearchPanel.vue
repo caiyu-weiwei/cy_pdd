@@ -5,7 +5,7 @@
         <img :src="searchIcon" alt="">
         <input type="search" placeholder="请输入">
       </div>
-      <button>取消</button>
+      <button @click="isShowSearchPanel(false)">取消</button>
     </div>
   </div>
 </template>
@@ -13,6 +13,9 @@
 <script>
   export default {
     name: 'SearchPanel',
+    props: {
+      isShowSearchPanel: Function
+    },
     data() {
       return {
         searchIcon: require('../images/search.png')
@@ -34,9 +37,19 @@
       width 100%
       height 60px
       display flex
+      justify-content center
+      align-items center
       .search-input
         display flex
         flex 3
+        height 70%
+        justify-content center
         img
           width 25px
+          height 25px
+        input 
+          border none
+      button
+        flex 1
+        height 70%
 </style>

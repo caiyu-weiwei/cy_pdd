@@ -1,9 +1,7 @@
 <template>
   <div class="search-container">
     <!-- 搜索导航 -->
-    <search-nav/>
-    <!-- 搜索面板 -->
-    <search-panel></search-panel>
+    <search-nav :isShowSearchPanel="isShowSearchPanel" />
     <!-- 商品列表 -->
     <div class="shop">
       <!-- 左侧 -->
@@ -42,6 +40,8 @@
         </ul>
       </div>
     </div>
+    <!-- 搜索面板 -->
+    <search-panel v-if="isShow" :isShowSearchPanel="isShowSearchPanel"></search-panel>
   </div>
 </template>
 
@@ -644,7 +644,8 @@
               },
             ]
           },
-        ]
+        ],
+        isShow: false
       }
     },
     computed: {
@@ -705,6 +706,12 @@
       _scrollLeft(index) {
         let el = this.$refs.menuLis[index]
         this.leftScroll.scrollToElement(el, 300, 0, -100)
+      },
+      /**
+       * 切换控制面板显隐
+       */
+      isShowSearchPanel(flag) {
+        this.isShow = flag
       }
     },
   }
