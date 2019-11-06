@@ -3,7 +3,7 @@
     <div class="search-nav">
       <div class="search-input">
         <img :src="searchIcon" alt="">
-        <input type="search" placeholder="请输入">
+        <input ref="search" type="search" placeholder="请输入">
       </div>
       <button @click="isShowSearchPanel(false)">取消</button>
     </div>
@@ -21,10 +21,14 @@
         searchIcon: require('../images/search.png')
       }
     },
+    mounted() {
+      this.$refs.search.focus()
+    },
   }
 </script>
 
 <style scoped lang="stylus" ref="stylesheet/stylus">
+  @import '../../../common/stylus/mixins.styl'
   .search-panel
     width 100%
     height 100%
@@ -37,19 +41,29 @@
       width 100%
       height 60px
       display flex
-      justify-content center
+      justify-content space-between
       align-items center
+      padding 0 20px
+      border-bottom-1px(#ccc)
       .search-input
         display flex
-        flex 3
-        height 70%
-        justify-content center
+        width 85%
+        height 38px
+        align-items center
+        background-color #ededed
+        border-radius 10px
+        padding 0 10px
+        input
+          width 90%
+          height 90%
+          padding-left 10px
+          font-size 16px
+          background-color transparent
+          outline none 
         img
-          width 25px
-          height 25px
-        input 
-          border none
+          width 20px
       button
-        flex 1
-        height 70%
+        background-color transparent
+        font-size 16px
+        color #aaa
 </style>
