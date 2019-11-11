@@ -3,8 +3,8 @@
     <!-- 轮播图 -->
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide" v-for="(item, index) in sliderImgList" :key="index">
-          <img :src="item" width="100%">
+        <div class="swiper-slide" v-for="(item, index) in homecasual" :key="index">
+          <img :src="item.imgurl" width="100%">
         </div>
       </div>
       <div class="swiper-pagination"></div>
@@ -36,17 +36,6 @@
     },
     data() {
       return {
-        sliderImgList: [
-          require('../../imgs/rowing/s1.png'),
-          require('../../imgs/rowing/s2.png'),
-          require('../../imgs/rowing/s3.png'),
-          require('../../imgs/rowing/s4.png'),
-          require('../../imgs/rowing/s5.png'),
-          require('../../imgs/rowing/s6.png'),
-          require('../../imgs/rowing/s7.png'),
-          require('../../imgs/rowing/s8.png'),
-          require('../../imgs/rowing/s9.png'),
-        ],
         hotAd: require('../../imgs/hot_ad/home_ad.gif')
       }
     },
@@ -57,25 +46,29 @@
       /**
        * 获取轮播图数据
        */
-      // this.$store.dispatch('reqHomeCasual')
-      new Swiper ('.swiper-container', {
-        autoplay: true,//可选选项，自动滑动
-        loop: true, // 循环模式选项
-        effect: 'coverflow',
-        slidesPerView: 1,
-        centeredSlides: true,
-        coverflowEffect: {
-          rotate: 60,
-          stretch: 10,
-          depth: 60,
-          modifier: 2,
-          slideShadows : true
-        },
-        // 如果需要分页器
-        pagination: {
-          el: '.swiper-pagination',
-        }
-      })        
+      this.$store.dispatch('reqHomeCasual', () => {
+        this.$nextTick(() => {
+          new Swiper ('.swiper-container', {
+            autoplay: true,//可选选项，自动滑动
+            loop: true, // 循环模式选项
+            effect: 'coverflow',
+            slidesPerView: 1,
+            centeredSlides: true,
+            coverflowEffect: {
+              rotate: 60,
+              stretch: 10,
+              depth: 60,
+              modifier: 2,
+              slideShadows : true
+            },
+            // 如果需要分页器
+            pagination: {
+              el: '.swiper-pagination',
+            }
+          })   
+        })
+      })
+           
     }
   }
 </script>

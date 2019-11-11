@@ -10,9 +10,10 @@ export default {
   /**
    * 获取首页轮播图
    */
-  async reqHomeCasual({commit}) {
+  async reqHomeCasual({commit}, callback) {
     const result = await getHomeCasual()
-    commit(HOME_CASUAL, result.message.data)
+    commit(HOME_CASUAL, {homecasual: result.data.data})
+    callback && callback()
   },
   /**
    * 获取首页二级导航图片
