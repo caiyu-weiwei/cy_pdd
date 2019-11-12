@@ -10,3 +10,6 @@ export const getHomeCasual = () => ajax(BASE_URL + '/api/homecasual')
 
 // 请求首页导航
 export const getHomeNav = () => ajax(BASE_URL + '/api/homenav')
+
+// 请求推荐列表
+export const getRecommendList = () => ajax(BASE_URL + '/api/recommendlist')

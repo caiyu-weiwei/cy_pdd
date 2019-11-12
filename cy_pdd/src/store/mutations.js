@@ -1,6 +1,7 @@
 import {
   HOME_CASUAL,
-  HOME_NAV
+  HOME_NAV,
+  RECOMMEND_LIST
 } from './mutation-types'
 export default {
   /**
@@ -18,5 +19,13 @@ export default {
    */
   [HOME_NAV](state, {homenav}) {
     state.homenav = homenav
+  },
+  /**
+   * 推荐模块商品列表
+   * @param {*} state 
+   * @param {*} param1 
+   */
+  [RECOMMEND_LIST](state, {recommendlist}) {
+    state.recommendlist =recommendlist
   }
 }

@@ -1,13 +1,21 @@
 <template>
   <div class="recommend-container">
     <ul class="recommend">
-      <shop-list></shop-list>
+      <shop-list
+        v-for="(item, index) in recommendlist"
+        :key="index"
+        :item="item"
+      >
+      </shop-list>
     </ul>
   </div>
 </template>
 
 <script>
   import ShopList from '@/components/ShopList/ShopList'
+  import {
+    mapState
+  } from 'vuex'
   export default {
     name: 'Recommend',
     data() {
@@ -15,7 +23,13 @@
     },
     components: {
       ShopList
-    }
+    },
+    computed: {
+      ...mapState(['recommendlist'])
+    },
+    mounted() {
+      this.$store.dispatch('reqRecommendList')
+    },
   }
 </script>
 

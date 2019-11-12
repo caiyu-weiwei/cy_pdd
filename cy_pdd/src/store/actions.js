@@ -1,10 +1,12 @@
 import {
   getHomeCasual,
   getHomeNav,
+  getRecommendList
 } from 'api'
 import {
   HOME_CASUAL,
-  HOME_NAV
+  HOME_NAV,
+  RECOMMEND_LIST
 } from './mutation-types'
 export default {
   /**
@@ -22,5 +24,13 @@ export default {
   async reqHomeNav({commit}) {
     const result = await getHomeNav()
     commit(HOME_NAV, result.message.data)
+  },
+  /**
+   * 获取推荐模块商品列表
+   * @param {*} param0 
+   */
+  async reqRecommendList({commit}) {
+    const result = await getRecommendList()
+    commit(RECOMMEND_LIST, {recommendlist: result.data.data})
   }
 }

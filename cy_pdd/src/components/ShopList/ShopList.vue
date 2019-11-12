@@ -1,10 +1,10 @@
 <template>
   <a class="recommend-item">
-    <img :src="imgRecommend" alt="" style="100%">
-    <h4 class="item-title">11111111111</h4>
+    <img :src="item.thumb_url" alt="" style="100%">
+    <h4 class="item-title">{{item.short_name}}</h4>
     <div class="item-bottom">
-      <span class="item-price">￥29.8</span>
-      <span class="item-sales">已拼10万+件</span>
+      <span class="item-price">￥{{item.price / 100}}</span>
+      <span class="item-sales">{{item.sales_tip}}</span>
       <button class="item-btn">找相关</button>
     </div>
   </a>
@@ -13,6 +13,7 @@
 <script>
   export default {
     name: 'ShopList',
+    props: ['item'],
     data() {
       return {
         imgRecommend: require('static/img/loading.jpg')
