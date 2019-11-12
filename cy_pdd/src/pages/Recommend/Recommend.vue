@@ -1,23 +1,31 @@
 <template>
   <div class="recommend-container">
     <ul class="recommend">
-      <li class="recommend-item">
-        <img src="" alt="" style="100%">
-        <h4 class="item-title"></h4>
-        <div class="item-bottom"></div>
-      </li>
+      <shop-list></shop-list>
     </ul>
   </div>
 </template>
 
 <script>
+  import ShopList from '@/components/ShopList/ShopList'
   export default {
-    name: 'Recommend'
+    name: 'Recommend',
+    data() {
+      return {}
+    },
+    components: {
+      ShopList
+    }
   }
 </script>
 
 <style lang="stylus" scoped ref="stylesheet/stylus">
-  .recommend-container{
+  .recommend-container
+    width 100%
+    height 100%
     background #F5F5F5
-  }
+    .recommend
+      display flex
+      flex-direction row
+      flex-wrap wrap
 </style>
