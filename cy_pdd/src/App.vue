@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app">
     <router-view></router-view>
     <tab-bar></tab-bar>
   </div>
@@ -19,4 +19,8 @@ export default {
 </script>
 
 <style scoped lang="stylus" ref="stylesheet/stylus">
+  #app
+    width 100%
+    height 100%
+    background-color #F5F5F5
 </style>

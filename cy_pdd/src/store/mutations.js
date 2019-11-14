@@ -26,6 +26,6 @@ export default {
    * @param {*} param1 
    */
   [RECOMMEND_LIST](state, {recommendlist}) {
-    state.recommendlist =recommendlist
+    state.recommendlist = state.recommendlist.concat(recommendlist)
   }
 }

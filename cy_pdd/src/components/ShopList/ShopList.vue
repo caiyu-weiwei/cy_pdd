@@ -15,9 +15,7 @@
     name: 'ShopList',
     props: ['item'],
     data() {
-      return {
-        imgRecommend: require('static/img/loading.jpg')
-      }
+      return {}
     },
   }
 </script>

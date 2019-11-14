@@ -29,8 +29,9 @@ export default {
    * 获取推荐模块商品列表
    * @param {*} param0 
    */
-  async reqRecommendList({commit}) {
-    const result = await getRecommendList()
+  async reqRecommendList({commit}, params) {
+    console.log(params)
+    const result = await getRecommendList(params)
     commit(RECOMMEND_LIST, {recommendlist: result.data.data})
   }
 }

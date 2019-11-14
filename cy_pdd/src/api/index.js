@@ -12,4 +12,4 @@ export const getHomeCasual = () => ajax(BASE_URL + '/api/homecasual')
 export const getHomeNav = () => ajax(BASE_URL + '/api/homenav')
 
 // 请求推荐列表
-export const getRecommendList = () => ajax(BASE_URL + '/api/recommendlist')
+export const getRecommendList = (params) => ajax(BASE_URL + '/api/recommendlist', params)
