@@ -39,13 +39,7 @@
       }
     },
     mounted() {
-      Indicator.open({
-          text: '加载中...',
-          spinnerType: 'fading-circle'
-        })
-      this.$store.dispatch('reqRecommendList', {pageNo: this.pageNo, pageSize: this.pageSize, callback: () => {
-        Indicator.close()
-      }})
+      this._refineCommonFunction()
     },
     methods: {
       _initBScroll() {
@@ -58,25 +52,31 @@
 
         // 滚动结束重新初始化listScroll的dom结构
         this.listScroll.on('scrollEnd', () => {
-          this.listScroll.refresh()
+          // this.listScroll.refresh()
         })
 
         this.listScroll.on('touchEnd', ({x, y}) => {
           // 下拉刷新
           if (y>=50) {
             console.log('下拉刷新')
-            // this.pageNo-=1
-            // if (this.pageNo < 0) this.pageNo = 1
-            // this.$store.dispatch('reqRecommendList', {pageNo: this.pageNo, pageSize: this.pageSize})
           }
           // 上拉加载
           if (this.listScroll.maxScrollY > y+20) {
             console.log('上拉加载')
             this.pageNo+=1
-            this.$store.dispatch('reqRecommendList', {pageNo: this.pageNo, pageSize: this.pageSize})
+            this._refineCommonFunction()
           }
         })
       },
+      _refineCommonFunction() {
+        Indicator.open({
+          text: '加载中...',
+          spinnerType: 'fading-circle'
+        })
+        this.$store.dispatch('reqRecommendList', {pageNo: this.pageNo, pageSize: this.pageSize, callback: () => {
+          Indicator.close()
+        }})
+      }
     },
   }
 </script>
