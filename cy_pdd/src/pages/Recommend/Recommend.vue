@@ -42,6 +42,11 @@
     },
     methods: {
       _initBScroll() {
+
+        Indicator.open({
+          text: '加载中...',
+          spinnerType: 'fading-circle'
+        })
         // 初始化滚动
         this.listScroll = new BScroll('.recommend-container', {
           scrollY: true,
