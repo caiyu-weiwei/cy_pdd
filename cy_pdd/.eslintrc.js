@@ -15,18 +15,9 @@ module.exports = {
     // https://github.com/standard/standard/blob/master/docs/RULES-en.md
     'standard'
   ],
-  "presets": [
-    ["es2015", { "modules": false }]
-  ],
   // required to lint *.vue files
   plugins: [
-    'vue',
-    ["component", [
-      {
-        "libraryName": "mint-ui",
-        "style": true
-      }
-    ]]
+    'vue'
   ],
   // add your custom rules here
   rules: {

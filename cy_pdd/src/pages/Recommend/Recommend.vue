@@ -13,6 +13,7 @@
 <script>
   import ShopList from '@/components/ShopList/ShopList'
   import BScroll from 'better-scroll'
+  import { Indicator } from 'mint-ui'
   import {
     mapState
   } from 'vuex'
@@ -38,15 +39,17 @@
       }
     },
     mounted() {
-      this.$store.dispatch('reqRecommendList', {pageNo: this.pageNo, pageSize: this.pageSize})
+      Indicator.open({
+          text: '加载中...',
+          spinnerType: 'fading-circle'
+        })
+      this.$store.dispatch('reqRecommendList', {pageNo: this.pageNo, pageSize: this.pageSize, callback: () => {
+        Indicator.close()
+      }})
     },
     methods: {
       _initBScroll() {
 
-        Indicator.open({
-          text: '加载中...',
-          spinnerType: 'fading-circle'
-        })
         // 初始化滚动
         this.listScroll = new BScroll('.recommend-container', {
           scrollY: true,

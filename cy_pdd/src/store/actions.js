@@ -33,5 +33,6 @@ export default {
     console.log(params)
     const result = await getRecommendList(params)
     commit(RECOMMEND_LIST, {recommendlist: result.data.data})
+    params.callback && params.callback()
   }
 }
