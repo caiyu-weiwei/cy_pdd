@@ -23,10 +23,12 @@
               <button
                 class="get-vertification"
                 v-if="!countdown"
+                :class="{'phone-right': phoneTest}"
+                @click.prevent="getVertificationCode()"
                 >
                 获取验证码
               </button>
-              <button v-else class="get-vertification">已发送{{countdown}}s</button>
+              <button disabled="disabled" v-else class="get-vertification">已发送{{countdown}}s</button>
             </section>
             <section class="login-vertification">
               <input type="tel" maxlength="8" placeholder="验证码">
@@ -79,15 +81,38 @@
         captchaImg: require('./images/captcha.svg'), // 验证码静态图片
       }
     },
+    computed: {
+      phoneTest() {
+        return /^[1][3,4,5,7,8][0-9]{9}$/.test(this.phone)
+      }
+    },
     methods: {
       login() {
         console.log('login')
       },
+      /**
+       * 切换短信登录与账号登录方式
+       */
       switchLoginMode(loginMode) {
         this.loginMode = loginMode
       },
+      /**
+       * 密码明文、密文切换
+       */
       switchPwdMode(pwdMode) {
         this.pwdMode = pwdMode
+      },
+      /**
+       * 获取短信登录验证码倒计时
+       */
+      getVertificationCode() {
+        if (this.phoneTest) {
+          this.countdown = 60
+          this.intervalId = setInterval(() => {
+            this.countdown--
+            !this.countdown && clearInterval(this.intervalId)
+          }, 1000)
+        }
       }
     }
   }
@@ -150,6 +175,8 @@
               color #ccc
               font-size 14px
               background-color transparent
+              &.phone-right
+                color mediumpurple
           .login-vertification
             position relative
             height 48px
