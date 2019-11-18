@@ -56,7 +56,7 @@
           </div>
           <button class="login-submit">登录</button>
         </form>
-        <button class="login-back">返回</button>
+        <button class="login-back" @click="$router.back()">返回</button>
       </div>
     </div>
   </div>
