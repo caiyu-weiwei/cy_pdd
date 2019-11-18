@@ -4,7 +4,7 @@
       <img :src="loginImg" />
     </div>
     <h4>选择登录方式</h4>
-    <button>手机登录</button>
+    <router-link to="/login" tag="button">手机登录</router-link>
   </div>
 </template>
 
@@ -16,6 +16,7 @@
         loginImg: require('./images/cy_logo_sm.png')
       }
     },
+    methods: {}
   }
 </script>
 
@@ -26,7 +27,6 @@
     position fixed
     top 0
     left 0
-    z-index 1000
     background-color #F5F5F5
     display flex
     flex-direction column
