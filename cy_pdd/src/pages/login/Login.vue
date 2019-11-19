@@ -53,7 +53,7 @@
             </section>
             <section class="login-message">
               <input type="text" maxlength="11" placeholder="验证码">
-              <img :src="captchaImg" class="get-vertification">
+              <img ref="captcha" src="http://localhost:3000/api/captcha" class="get-vertification" @click="getCaptcha()">
             </section>
           </div>
           <button class="login-submit">登录</button>
@@ -113,6 +113,12 @@
             !this.countdown && clearInterval(this.intervalId)
           }, 1000)
         }
+      },
+      /**
+       * 获取图像验证码
+       */
+      getCaptcha() {
+        this.$refs.captcha.src = 'http://localhost:3000/api/captcha?time='+ new Date()
       }
     }
   }
