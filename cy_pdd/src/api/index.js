@@ -13,3 +13,6 @@ export const getHomeNav = () => ajax(BASE_URL + '/api/homenav')
 
 // 请求推荐列表
 export const getRecommendList = (params) => ajax(BASE_URL + '/api/recommendlist', params)
+
+// 获取短信验证码
+export const getMessageCode = (params) => ajax(BASE_URL + '/api/send_code', params)

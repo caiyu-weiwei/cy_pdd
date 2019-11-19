@@ -65,6 +65,7 @@
 </template>
 
 <script>
+  import { getMessageCode } from '@/api/index'
   export default {
     name: 'Login',
     data() {
@@ -105,7 +106,7 @@
       /**
        * 获取短信登录验证码倒计时
        */
-      getVertificationCode() {
+      async getVertificationCode() {
         if (this.phoneTest) {
           this.countdown = 60
           this.intervalId = setInterval(() => {
@@ -113,6 +114,8 @@
             !this.countdown && clearInterval(this.intervalId)
           }, 1000)
         }
+        let res = await getMessageCode({phone: this.phone})
+        console.log('短信验证码', res)
       },
       /**
        * 获取图像验证码
