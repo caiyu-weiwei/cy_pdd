@@ -16,3 +16,6 @@ export const getRecommendList = (params) => ajax(BASE_URL + '/api/recommendlist'
 
 // 获取短信验证码
 export const getMessageCode = (params) => ajax(BASE_URL + '/api/send_code', params)
+
+// 短信验证码登录
+export const phoneCodeLogin = (phone, code) => ajax(BASE_URL + '/api/login_code', {phone, code}, 'POST')

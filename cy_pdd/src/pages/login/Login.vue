@@ -15,7 +15,7 @@
       </div>
       <!-- 面板表单 -->
       <div class="login-content">
-        <form @submit.prevent="login">
+        <form>
           <!-- 短信登录部分 -->
           <div :class="{current: loginMode}">
             <section class="login-message">
@@ -31,7 +31,7 @@
               <button disabled="disabled" v-else class="get-vertification">已发送{{countdown}}s</button>
             </section>
             <section class="login-vertification">
-              <input type="tel" maxlength="8" placeholder="验证码">
+              <input type="tel" maxlength="8" placeholder="验证码" v-model="code">
             </section>
             <section class="login-hint">
               温馨提示：未注册帐号的手机号，登录时将自动注册，且代表已同意
@@ -56,7 +56,7 @@
               <img ref="captcha" src="http://localhost:3000/api/captcha" class="get-vertification" @click="getCaptcha()">
             </section>
           </div>
-          <button class="login-submit">登录</button>
+          <button class="login-submit" @click.prevent="login()">登录</button>
         </form>
         <button class="login-back" @click="$router.back()">返回</button>
       </div>
@@ -65,7 +65,8 @@
 </template>
 
 <script>
-  import { getMessageCode } from '@/api/index'
+  import { getMessageCode, phoneCodeLogin } from '@/api/index'
+  import { Toast } from 'mint-ui'
   export default {
     name: 'Login',
     data() {
@@ -75,6 +76,7 @@
         showPwdImg: require('./images/show_pwd.png'), 
         loginMode: true, // 登录方式： true: 短信登录；false: 密码登录
         phone: '', // 短信登录的手机号
+        code: '', // 短信验证码
         countdown: 0, // 倒计时数据
         pwdMode: true, // 密码显示方式：true: 密文；false：明文
         username: '', // 用户名/手机/邮箱
@@ -115,13 +117,63 @@
           }, 1000)
         }
         let res = await getMessageCode({phone: this.phone})
-        console.log('短信验证码', res)
+        console.log('res', res)
+        if (res.data.code === 0) {
+          Toast({
+            message: '获取验证码失败',
+            position: 'center',
+            duration: 2000
+          })
+        }
       },
       /**
        * 获取图像验证码
        */
       getCaptcha() {
         this.$refs.captcha.src = 'http://localhost:3000/api/captcha?time='+ new Date()
+      },
+      /**
+       * 登录
+       */
+      async login() {
+        if (this.loginMode) {
+          // 短信验证码登录
+          if (!this.phone) {
+            Toast({
+              message: '请输入手机号！',
+              position: 'middle',
+              duration: 2000
+            })
+            return
+          } else if (!this.phoneTest) {
+              Toast({
+                message: '请输入正确的手机号！',
+                position: 'middle',
+                duration: 2000
+              })
+              return
+            }
+          if (!this.code) {
+            Toast({
+              message: '请输入验证码!',
+              position: 'middle',
+              duration: 2000
+            })
+            return
+          } else if (!(/^\d{6}$/gi.test(this.code))) {
+            Toast({
+              message: '请输入正确的验证码！',
+              position: 'middle',
+              duration: 2000
+            })
+            return
+          }
+          const res = await phoneCodeLogin(this.phone, this.code)
+          console.log(res)
+        } else {
+          // 账号、密码登录
+
+        }
       }
     }
   }
