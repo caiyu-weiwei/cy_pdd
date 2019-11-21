@@ -67,6 +67,7 @@
 <script>
   import { getMessageCode, phoneCodeLogin } from '@/api/index'
   import { Toast } from 'mint-ui'
+  import {mapActions} from 'vuex'
   export default {
     name: 'Login',
     data() {
@@ -81,7 +82,7 @@
         pwdMode: true, // 密码显示方式：true: 密文；false：明文
         username: '', // 用户名/手机/邮箱
         pwd: '', // 登录密码
-        captchaImg: require('./images/captcha.svg'), // 验证码静态图片
+        userInfo: {}, // 用户信息
       }
     },
     computed: {
@@ -90,6 +91,7 @@
       }
     },
     methods: {
+      ...mapActions(['syncUserInfo']),
       login() {
         console.log('login')
       },
@@ -170,9 +172,25 @@
           }
           const res = await phoneCodeLogin(this.phone, this.code)
           console.log(res)
+          if (res.data.code === 200) {
+            this.userInfo = res.data.data
+          } else {
+            this.userInfo.message = '登录失败， 用户名或密码错误！'
+          }
         } else {
           // 账号、密码登录
 
+        }
+
+        if (!this.userInfo.userId) {
+          Toast({
+            message: this.userInfo.message,
+            position: 'middle',
+            duration: 2000
+          })
+        } else {
+          this.syncUserInfo(this.userInfo)
+          this.$router.back()
         }
       }
     }

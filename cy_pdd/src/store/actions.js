@@ -6,7 +6,8 @@ import {
 import {
   HOME_CASUAL,
   HOME_NAV,
-  RECOMMEND_LIST
+  RECOMMEND_LIST,
+  ASYNC_USER_INFO
 } from './mutation-types'
 export default {
   /**
@@ -34,5 +35,13 @@ export default {
     const result = await getRecommendList(params)
     commit(RECOMMEND_LIST, {recommendlist: result.data.data})
     params.callback && params.callback()
+  },
+  /**
+   * 同步用户信息
+   * @param {*} param0 
+   * @param {*} userInfo 
+   */
+  syncUserInfo({commit}, userInfo) {
+    commit(ASYNC_USER_INFO, {userInfo})
   }
 }
