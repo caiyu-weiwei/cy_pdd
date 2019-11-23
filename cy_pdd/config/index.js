@@ -11,14 +11,13 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/api': {
-        target: 'http://www.abc.com',  //目标接口域名
-        changeOrigin: true,  //是否跨域
+      '/local_api': { //使用"/local_api"来代替线上服务器地址
+        target: 'http://localhost:3000',  //源地址
+        changeOrigin: true,  //改变源
         pathRewrite: {
-          '^/api': '/api'   //重写接口
+          '^/local_api': ''   //路径重写
         }
-      },
-    cssSourceMap: false
+      }
     },
 
     // Various Dev Server settings
