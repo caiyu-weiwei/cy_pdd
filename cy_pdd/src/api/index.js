@@ -22,3 +22,6 @@ export const phoneCodeLogin = (phone, code) => ajax(BASE_URL + '/api/login_code'
 
 // 用户名、密码登录
 export const captchaLogin = (userName, pwd, captcha) => ajax(BASE_URL + '/api/login_captcha', {userName, pwd, captcha}, 'POST')
+
+// 异步获取用户信息
+export const reqUserInfo = () => ajax(BASE_URL + '/api/user_info')

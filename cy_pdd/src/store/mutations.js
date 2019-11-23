@@ -2,7 +2,7 @@ import {
   HOME_CASUAL,
   HOME_NAV,
   RECOMMEND_LIST,
-  ASYNC_USER_INFO
+  SYNC_USER_INFO
 } from './mutation-types'
 export default {
   /**
@@ -29,7 +29,7 @@ export default {
   [RECOMMEND_LIST](state, {recommendlist}) {
     state.recommendlist = state.recommendlist.concat(recommendlist)
   },
-  [ASYNC_USER_INFO](state, {userInfo}) {
+  [SYNC_USER_INFO](state, {userInfo}) {
     state.userInfo = userInfo
   }
 }

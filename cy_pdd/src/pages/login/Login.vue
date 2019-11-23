@@ -149,8 +149,9 @@
             return
           }
           const res = await phoneCodeLogin(this.phone, this.code)
-          if (res.data.code === 200) {
-            this.userInfo = res.data.data
+          const { code, data } = res.data
+          if (code === 200) {
+            this.userInfo = data
           } else {
             this.userInfo.message = '登录失败， 用户名或密码错误！'
           }
@@ -168,8 +169,13 @@
             Toast('请输入图形验证！')
             return
           }
-          let result = await captchaLogin(this.userName, this.pwd, this.captcha)
-          console.log('用户名密码登录', result)
+          const res = await captchaLogin(this.userName, this.pwd, this.captcha)
+          const { code, data } = res.data
+          if (code === 200) {
+            this.userInfo = data
+          } else {
+            this.userInfo.message = '登录失败， 用户名或密码错误！'
+          }
         }
 
         if (!this.userInfo.userId) {

@@ -1,13 +1,14 @@
 import {
   getHomeCasual,
   getHomeNav,
-  getRecommendList
+  getRecommendList,
+  reqUserInfo
 } from 'api'
 import {
   HOME_CASUAL,
   HOME_NAV,
   RECOMMEND_LIST,
-  ASYNC_USER_INFO
+  SYNC_USER_INFO
 } from './mutation-types'
 export default {
   /**
@@ -42,6 +43,18 @@ export default {
    * @param {*} userInfo 
    */
   syncUserInfo({commit}, userInfo) {
-    commit(ASYNC_USER_INFO, {userInfo})
+    commit(SYNC_USER_INFO, {userInfo})
+  },
+  /**
+   * 异步获取用户信息
+   * @param {*} param0 
+   */
+  async getUserInfo({commit}) {
+    const result = await reqUserInfo()
+    console.log('异步获取用户信息', result)
+    const {code, data:userInfo} = result.data
+    if (code === 200) {
+      commit(SYNC_USER_INFO, {userInfo})
+    }
   }
 }

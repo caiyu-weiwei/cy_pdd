@@ -14,6 +14,9 @@ export default {
   },
   components: {
     TabBar
+  },
+  created() {
+    this.$store.dispatch('getUserInfo')
   }
 }
 </script>
