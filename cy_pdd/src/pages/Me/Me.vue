@@ -1,21 +1,21 @@
 <template>
   <div class="me">
     <div v-if="userInfo.userId">
-       用户已登录
+       <me-top/>
     </div>
-    <div v-else>
-      <select-login></select-login>
-    </div>
+    <select-login v-else></select-login>
   </div>
 </template>
 
 <script>
   import SelectLogin from '@/pages/Login/SelectLogin'
+  import MeTop from './MeTop'
   import {mapState} from 'vuex'
   export default {
     name: 'Me',
     components: {
-      SelectLogin
+      SelectLogin,
+      MeTop
     },
     computed: {
       ...mapState(['userInfo'])

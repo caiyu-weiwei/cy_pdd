@@ -13,6 +13,9 @@ import LyTab from 'ly-tab'
 // 引入store
 import store from './store'
 
+// 引入字体图标文件
+import 'common/css/style.css'
+
 // 应用相应组件
 Vue.use(LyTab)
 Vue.use(Indicator)

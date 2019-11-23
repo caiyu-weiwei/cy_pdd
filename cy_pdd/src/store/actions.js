@@ -51,7 +51,6 @@ export default {
    */
   async getUserInfo({commit}) {
     const result = await reqUserInfo()
-    console.log('异步获取用户信息', result)
     const {code, data:userInfo} = result.data
     if (code === 200) {
       commit(SYNC_USER_INFO, {userInfo})
