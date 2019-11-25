@@ -7,6 +7,7 @@ import Search from '@/pages/Search/Search'
 import Chat from '@/pages/Chat/Chat'
 import Me from '@/pages/Me/Me'
 import Login from '@/pages/Login/Login'
+import MeSetting from '@/pages/Me/MeSetting'
 
 
 import Hot from '@/pages/Home/Children/Hot/Hot'
@@ -79,6 +80,13 @@ export default new VueRouter({
     {
       path: '/login',
       component: Login,
+      meta: {
+        showBottomTabBar: false
+      }
+    },
+    {
+      path: '/setting',
+      component: MeSetting,
       meta: {
         showBottomTabBar: false
       }

@@ -2,7 +2,7 @@
   <div class="me-top">
     <div class="me-info">
       <img :src="meImg" >
-      <span>158****3727</span>
+      <span>{{userInfo.userPhone | phoneFormat}}</span>
       <i class="cy-3"></i>
     </div>
     <div class="my-order">
@@ -66,15 +66,16 @@
         <i class="cy-3"></i>
         <span>官方客服</span>
       </div>
-      <div class="setting-item">
+      <router-link class="setting-item" tag="div" to="setting">
         <i class="cy-4"></i>
         <span>设置</span>
-      </div>
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
+  import {mapState} from 'vuex'
   export default {
     name: 'MeTop',
     data() {
@@ -82,6 +83,22 @@
         meImg: require('./images/me_icon.png')
       }
     },
+    computed: {
+      ...mapState(['userInfo'])
+    },
+    filters: {
+      phoneFormat(phone) {
+        let phoneArr = [...phone], arrVal = []
+        phoneArr.forEach((item, index) => {
+          if (index>2 && index<7) {
+            arrVal.push('*')
+          } else {
+            arrVal.push(item)
+          }
+        })
+        return arrVal.join('')
+      }
+    }
   }
 </script>
 
