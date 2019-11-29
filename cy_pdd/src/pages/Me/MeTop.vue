@@ -66,7 +66,7 @@
         <i class="cy-3"></i>
         <span>官方客服</span>
       </div>
-      <router-link class="setting-item" tag="div" to="setting">
+      <router-link class="setting-item" tag="div" to="/setting">
         <i class="cy-4"></i>
         <span>设置</span>
       </router-link>
