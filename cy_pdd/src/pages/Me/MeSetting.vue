@@ -12,28 +12,32 @@
     <div class="setting-block">
       <me-common-cell leftTitle="商家免费入驻" leftIcon="cy-4" :cellClick="cellClick"></me-common-cell>
     </div>
-    <div class="logout" @click="logout">退出登录</div>
+    <div class="logout" @click="handlerLogout">退出登录</div>
   </div>
 </template>
 
 <script>
   import MeCommonCell from './MeCommonCell'
   import {MessageBox} from 'mint-ui'
+  import {mapActions} from 'vuex'
   export default {
     name: 'MeSetting',
     components: {
       MeCommonCell
     },
     methods: {
+      ...mapActions(['logout']),
       cellClick(param) {
         console.log(param)
       },
-      logout() {
+      handlerLogout() {
         MessageBox
           .confirm('您确定要退出吗？')
           .then(action => {
             if ('confirm' === action) {
               console.log('action', action)
+              this.logout()
+              this.$router.replace('/home')
             }
           })
       }

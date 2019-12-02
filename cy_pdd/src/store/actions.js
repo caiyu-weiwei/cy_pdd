@@ -2,13 +2,15 @@ import {
   getHomeCasual,
   getHomeNav,
   getRecommendList,
-  reqUserInfo
+  reqUserInfo,
+  reqLogout
 } from 'api'
 import {
   HOME_CASUAL,
   HOME_NAV,
   RECOMMEND_LIST,
-  SYNC_USER_INFO
+  SYNC_USER_INFO,
+  RESET_USER_INFO
 } from './mutation-types'
 export default {
   /**
@@ -54,6 +56,18 @@ export default {
     const {code, data:userInfo} = result.data
     if (code === 200) {
       commit(SYNC_USER_INFO, {userInfo})
+    }
+  },
+
+  /**
+   * 退出登录
+   * @param {*} param0 
+   */
+  async logout({commit}) {
+    const result = await reqLogout()
+    const {code} = result.data
+    if (code === 200) {
+      commit(RESET_USER_INFO)
     }
   }
 }

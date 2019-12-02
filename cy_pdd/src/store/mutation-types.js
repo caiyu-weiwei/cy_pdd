@@ -6,3 +6,6 @@ export const HOME_NAV = 'home_nav'
 export const RECOMMEND_LIST = 'recommend_list'
 // 同步用户信息
 export const SYNC_USER_INFO = 'sync_user_info'
+
+// 退出登录，重置用户信息
+export const RESET_USER_INFO = 'reset_ user_info'

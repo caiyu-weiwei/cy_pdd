@@ -25,3 +25,6 @@ export const captchaLogin = (userName, pwd, captcha) => ajax(BASE_URL + '/api/lo
 
 // 异步获取用户信息
 export const reqUserInfo = () => ajax(BASE_URL + '/api/user_info')
+
+// 退出登录
+export const reqLogout = () => ajax(BASE_URL + '/api/logout')
