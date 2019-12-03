@@ -1,10 +1,10 @@
 <template>
   <div class="me-top">
-    <div class="me-info">
+    <router-link class="me-info" tag="div" to="/meDetail">
       <img :src="meImg" >
       <span>{{userInfo.userPhone | phoneFormat}}</span>
       <i class="cy-3"></i>
-    </div>
+    </router-link>
     <div class="my-order">
       <div class="order-top">
         <h3>我的订单</h3>
@@ -19,7 +19,7 @@
           <i class="cy-2"></i>
           <span>待分享</span>
         </div>
-        <div class="bottom-item">
+        <div class="bottom-item"> 
           <i class="cy-3"></i>
           <span>待发货</span>
         </div>
