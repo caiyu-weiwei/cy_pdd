@@ -2,7 +2,12 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
-import { Indicator, Toast } from 'mint-ui'
+import { 
+  Indicator, 
+  Toast, 
+  Actionsheet,
+  DatetimePicker 
+ } from 'mint-ui'
 
 // 引入路由器
 import router from './router'
@@ -20,6 +25,8 @@ import 'common/css/style.css'
 Vue.use(LyTab)
 Vue.use(Indicator)
 Vue.use(Toast)
+Vue.component(Actionsheet.name, Actionsheet)
+Vue.component(DatetimePicker.name, DatetimePicker)  
 
 new Vue({
   el: '#app',
