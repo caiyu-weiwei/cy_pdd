@@ -49,6 +49,7 @@
 </template>
 
 <script>
+  import moment from 'moment'
   export default {
     name: 'MeDetail',
     data() {
@@ -95,11 +96,12 @@
       },
       handleConfirm(dateVal) {
         console.log('handleCconfirm', dateVal)
-        const date = new Date(dateVal)
-        const year = date.getFullYear()
-        const month = date.getMonth()+1
-        const day = date.getDate()
-        this.birthday = `${year}.${month<10 ? '0'+month : month}.${day<10 ? '0'+day : day}`
+        // const date = new Date(dateVal)
+        // const year = date.getFullYear()
+        // const month = date.getMonth()+1
+        // const day = date.getDate()
+        // this.birthday = `${year}.${month<10 ? '0'+month : month}.${day<10 ? '0'+day : day}`
+        this.birthday = moment(dateVal).format('YYYY-MM-DD')
       }
     }
   }
