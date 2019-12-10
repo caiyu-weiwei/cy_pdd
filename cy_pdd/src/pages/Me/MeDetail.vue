@@ -40,6 +40,7 @@
       ref="picker"
       type="date"
       :startDate="startDate"
+      :endDate="endDate"
       year-format="{value} 年"
       month-format="{value} 月"
       date-format="{value} 日"
@@ -70,7 +71,8 @@
           }
         ],
         sheetVisibleSex: false,
-        startDate: new Date('1950.01.01'),
+        startDate: new Date('1970.01.01'),
+        endDate: new Date(),
         birthday: ''
       }
     },
@@ -101,7 +103,7 @@
         // const month = date.getMonth()+1
         // const day = date.getDate()
         // this.birthday = `${year}.${month<10 ? '0'+month : month}.${day<10 ? '0'+day : day}`
-        this.birthday = moment(dateVal).format('YYYY-MM-DD')
+        this.birthday = moment(dateVal).format('YYYY年MM月DD日')
       }
     }
   }
